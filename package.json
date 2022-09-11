@@ -1,0 +1,31 @@
+{
+  "name": "justPhoneMask",
+  "version": "0.1.0",
+  "description": "justPhoneMask builder",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp update"
+  },
+  "author": "putn1k",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.27.5",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify-es": "^3.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "last 1 versions",
+    "not IE 11"
+  ]
+}
