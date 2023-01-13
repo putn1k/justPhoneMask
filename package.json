@@ -1,7 +1,7 @@
 {
-  "name": "justPhoneMask",
-  "version": "0.1.0",
-  "description": "justPhoneMask builder",
+  "name": "JustPhoneMask",
+  "version": "0.1.1",
+  "description": "JustPhoneMask builder",
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp",

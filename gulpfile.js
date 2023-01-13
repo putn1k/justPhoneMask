@@ -32,7 +32,7 @@ const scriptsProd = () => {
     .pipe( babel( {
       presets: [ '@babel/env' ]
     } ) )
-    .pipe( rename( 'justPhoneMask.min.js' ) )
+    .pipe( rename( 'just-phone-mask.min.js' ) )
     .pipe( uglify().on( "error", notify.onError() ) )
     .pipe( dest( './dist/' ) )
 }

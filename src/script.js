@@ -1,4 +1,4 @@
-class justPhoneMask {
+class JustPhoneMask {
   constructor( options ) {
     const baseOptions = {
       countryCode: '+7',

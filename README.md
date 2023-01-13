@@ -1,4 +1,4 @@
-# justPhoneMask
+# JustPhoneMask v0.1.1
 
 Простой и лёгкий плагин для ввода маски телефонного номера
 
@@ -7,14 +7,14 @@
 + __Никаких зависимостей__.  Библиотека написана на чистом JavaScript, для работы не требуются иные библиотеки.
 + __Простота и функциональность__. Вы можете легко и быстро подключить и использовать библиотеку, которая реализует функционал для ввода маски телефонного номера
 
-1. Скачайте js-библиотеку justPhoneMask.min.js
+1. Скачайте js-библиотеку just-phone-mask.min.js
 2. Подключите библиотеку к проекту
 ```html
-  <script src="justPhoneMask.min.js"></script>
+  <script src="just-phone-mask.min.js"></script>
 ```
 3. Инициализируйте код библиотеки:
 ```javascript
-const mask = new justPhoneMask();
+const mask = new JustPhoneMask();
 ```
 
 ## Методы и свойства
@@ -22,7 +22,7 @@ const mask = new justPhoneMask();
 Библиотека поддерживает некоторые свойства
 
 ```javascript
-const mask = new justPhoneMask( {
+const mask = new JustPhoneMask( {
   countryCode: '+375',
   bodyMask: ' ___ __ ___ __ __',
   setPlaceholder: true,
