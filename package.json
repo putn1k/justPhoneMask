@@ -1,6 +1,6 @@
 {
   "name": "just-phone-mask",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/just-phone-mask.min.js",
   "description": "Simple and easy phone number input mask plugin",
   "author": "putn1k",
