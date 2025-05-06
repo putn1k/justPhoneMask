@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  
+  <title>Just Phone Mask</title>
+</head>
+
+<body>
+  <style>
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+      padding: 12px 24px;
+      margin: 8px 0;
+    }
+  </style>
+  <div class="container">
+    <input type="tel"
+           placeholder="Введите номер">
+    <input class="first"
+           type="tel"
+           placeholder="Введите номер">
+    <input class="second"
+           type="tel"
+           placeholder="Введите номер">
+  </div>
+  <script src="./just-phone-mask.min.js"></script>
+  <script>
+    new JustPhoneMask();
+
+    new JustPhoneMask( {
+      countryCode: '+375',
+      bodyMask: ' (___) __ ___ __-__',
+      setPlaceholder: true,
+      selectors: '.first',
+    } )
+
+    new JustPhoneMask( {
+      countryCode: '+380',
+      bodyMask: ' ___ __ ___ __ __',
+      selectors: '.second',
+    } )
+  </script>
+</body>
+
+</html>
