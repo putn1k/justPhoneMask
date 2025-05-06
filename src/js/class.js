@@ -1,15 +1,18 @@
-class JustPhoneMask {
-  constructor( options ) {
-    const baseOptions = {
-      countryCode: '+7',
-      bodyMask: ' ___ ___ __ __',
-      setPlaceholder: false,
-      selectors: null,
-    }
+import { DEFAULT_COUNTRY_CODE, DEFAULT_MASK, DEFAULT_PATTERN_SYMBOL, ALLOWED_TAGNAME, ALLOWED_MASK_ATTRIBUTE, Messages } from './const.js';
 
-    Object.defineProperties( baseOptions, {
+export default class JustPhoneMask {
+  #patternSymbol = DEFAULT_PATTERN_SYMBOL;
+  #defaultOptions = {
+    countryCode: DEFAULT_COUNTRY_CODE,
+    bodyMask: DEFAULT_MASK,
+    setPlaceholder: false,
+    selectors: null,
+  };
+
+  constructor( options ) {
+    Object.defineProperties( this.#defaultOptions, {
       maskPatternSymbol: {
-        value: '_',
+        value: this.#patternSymbol,
         writable: false,
         configurable: true
       },
@@ -30,37 +33,37 @@ class JustPhoneMask {
       },
     } );
 
-    this.options = Object.assign( baseOptions, options );
+    this.options = Object.assign( this.#defaultOptions, options );
 
     this.options.selectors ? this.maskNumbers = document.querySelectorAll( `${this.options.selectors}` ) : this.maskNumbers = document.querySelectorAll( '[type="tel"]' );
 
-    this.check();
+    this.#check();
   }
 
-  check() {
+  #check() {
     if ( this.maskNumbers.length === 0 ) return;
-    if ( !Array.from( this.maskNumbers ).every( element => element.tagName === 'INPUT' ) ) {
-      let el = Array.from( this.maskNumbers ).find( element => element.tagName !== 'INPUT' );
-      console.error( `Found element tagname ${el.tagName}. Element tagname must be only INPUT` );
+    if ( !Array.from( this.maskNumbers ).every( el => el.tagName === ALLOWED_TAGNAME ) ) {
+      let el = Array.from( this.maskNumbers ).find( el => el.tagName !== ALLOWED_TAGNAME );
+      console.error( Messages.IsWrongTagName(el.tagName) );
       return;
     }
-    this.init();
+    this.#init();
   }
 
-  init() {
+  #init() {
     this.maskNumbers.forEach( ( el ) => {
-      el.setAttribute( 'data-mask', this.options.phoneMask );
+      el.setAttribute( ALLOWED_MASK_ATTRIBUTE, this.options.phoneMask );
       this.options.setPlaceholder ? el.setAttribute( 'placeholder', this.options.phoneMask ) : '';
       el.addEventListener( 'input', ( evt ) => showMask( evt ) );
     } );
-    const showMask = ( e ) => {
-      let input = e.target;
-      let value = input.value;
-      let mask = input.dataset.mask;
+    const showMask = ( evt ) => {
+      const input = evt.target;
+      const value = input.value;
+      const mask = input.dataset.mask;
       let newValue = '';
 
       try {
-        let maskLength = mask.length;
+        const maskLength = mask.length;
         let valueIndex = 0;
         let maskIndex = 0;
 
@@ -73,16 +76,16 @@ class JustPhoneMask {
             if ( value[ valueIndex ] === mask[ maskIndex ] ) break;
 
             newValue += mask[ maskIndex++ ];
-          } //end while
+          }
 
           newValue += value[ valueIndex++ ];
           maskIndex++;
-        } //end for
+        }
 
         input.value = newValue;
       } catch ( err ) {
         console.error( err );
       }
-    }
+    };
   }
 }
